@@ -58,6 +58,11 @@ double kMaxCorrectionRatio = 0.30; /* cap corrective turning throttle to 30 perc
 /** holds the current angle to servo to */
 double _targetAngle = 0;
 
+//rev::CANEncoder left_encoder(rev::CANSparkMax *sparkyLeftLead);
+//rev::CANEncoder right_encoder(rev::CANSparkMax *sparkyRightLead);
+rev::CANEncoder left_encoder = sparkyLeftLead->GetEncoder();
+rev::CANEncoder right_encoder = sparkyLeftLead->GetEncoder();
+
 
 };
 
