@@ -32,7 +32,7 @@ DriveBase::DriveBase() : frc::Subsystem("DriveBase") {
 
 
 left_encoder = sparkyLeftLead->GetEncoder();
-right_encoder = sparkyLeftLead->GetEncoder();
+right_encoder = sparkyRightLead->GetEncoder();
 
 
 
@@ -78,7 +78,7 @@ void DriveBase::JoyDrive(){
     double forBack = Robot::oi->getJoystick1()->GetRawAxis(1);
     double turn = Robot::oi->getJoystick1()->GetRawAxis(4);
 	forBack*=-1;
-	
+
 frc::SmartDashboard::PutNumber("Left Encoder Pos", left_encoder.GetPosition());
 frc::SmartDashboard::PutNumber("Right Encoder Pos", right_encoder.GetPosition());
 frc::SmartDashboard::PutNumber("Left Encoder Vel", left_encoder.GetVelocity());
