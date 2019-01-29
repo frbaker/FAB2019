@@ -33,7 +33,8 @@ DriveBase::DriveBase() : frc::Subsystem("DriveBase") {
 
 left_encoder = sparkyLeftLead->GetEncoder();
 right_encoder = sparkyRightLead->GetEncoder();
-
+//Note the Right Side encoder and velocity return negative numbers when moving forward
+//the Left Side encoder and velocity return positive numbers when moving forward
 
 
 }
