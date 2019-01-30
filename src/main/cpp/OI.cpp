@@ -28,9 +28,9 @@ OI::OI() {
     
     joystick1.reset(new frc::Joystick(0));
     
-    joystickButton2.reset(new frc::JoystickButton(joystick1.get(), 2));
+    joystickButton2.reset(new frc::JoystickButton(joystick2.get(), 4));
     joystickButton2->WhileHeld(new CloseClaw());
-    joystickButton1.reset(new frc::JoystickButton(joystick1.get(), 1));
+    joystickButton1.reset(new frc::JoystickButton(joystick2.get(), 1));
     joystickButton1->WhileHeld(new OpenClaw());
 
     // SmartDashboard Buttons

@@ -28,7 +28,7 @@ private:
 	//std::shared_ptr<frc::Encoder> encody;
 
     
-	std::shared_ptr<rev::CANEncoder> encody;
+	
 	int P, I, D, error, setpoint, rcw;
 	double integral, derivative, previous_error;
 public:
@@ -43,6 +43,9 @@ void CloseClaw();
 void Stop();
 void setSetPoint(int setpoint);
 void PID();
+
+rev::CANEncoder encody = sparkyClaw->GetEncoder();
+
 };
 
 #endif

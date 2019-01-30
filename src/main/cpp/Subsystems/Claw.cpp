@@ -20,7 +20,8 @@
 
 Claw::Claw() : frc::Subsystem("Claw") {
     sparkyClaw.reset(new rev::CANSparkMax(5, rev::CANSparkMax::MotorType::kBrushless));
-    encody.reset(new rev::CANEncoder(*sparkyClaw));
+   
+    encody = sparkyClaw->GetEncoder();
     P, I, D = 0;
     error, setpoint, rcw = 0;
     integral, derivative, previous_error = 0.0;
@@ -53,21 +54,41 @@ void Claw::Periodic() {
 }
 
 void Claw::PID(){
-    error = setpoint - encody->GetPosition(); // Error = Target - Actual
+    /*error = setpoint - encody->GetPosition(); // Error = Target - Actual
     integral += (error*.02); // Integral is increased by the error*time (which is .02 seconds using normal IterativeRobot)
     derivative = (error - previous_error) / .02;
     rcw = P*error + I*integral + D*derivative;
+    */
+    
 }
 
 void Claw::OpenClaw(){
-    setSetPoint(200);
-    PID();
-    sparkyClaw->Set(rcw);
+    //setSetPoint(200);
+   //PID();
+   // sparkyClaw->Set(rcw);
+   if (encody.GetPosition() < 17.19){ //the furthest limit 
+        sparkyClaw->Set(.75);
+   }
+   else {
+       sparkyClaw->Set(0);
+   }
+   //sparkyClaw->Set(.25); //positive number moves boom pivot out (angles boom down)
+   frc::SmartDashboard::PutNumber("Claw Encoder Pos", encody.GetPosition());
 }
 void Claw::CloseClaw(){
-    setSetPoint(0);
-    PID();
-    sparkyClaw->Set(rcw);
+    //setSetPoint(0);
+    //PID();
+    //sparkyClaw->Set(rcw);
+  
+   if (encody.GetPosition() > 0){
+        sparkyClaw->Set(-.25);
+    }
+    else {
+       sparkyClaw->Set(0);
+   }
+   
+  //sparkyClaw->Set(-.25); //negative number moves boom pivot in (angles boom up)
+     frc::SmartDashboard::PutNumber("Claw Encoder Pos", encody.GetPosition());
 }
 void Claw::Stop(){
     sparkyClaw->Set(0.0);
