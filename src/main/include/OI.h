@@ -21,6 +21,19 @@ private:
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	std::shared_ptr<frc::Joystick> joystick2;
 	std::shared_ptr<frc::Joystick> joystick1;
 	std::shared_ptr<frc::JoystickButton> joystickButton2;
