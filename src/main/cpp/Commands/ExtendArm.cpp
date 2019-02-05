@@ -23,26 +23,26 @@ ExtendArm::ExtendArm(): frc::Command() {
 
 // Called just before this Command runs the first time
 void ExtendArm::Initialize() {
-
+    SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ExtendArm::Execute() {
-
+    Robot::armExtender->ArmOut();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ExtendArm::IsFinished() {
-    return false;
+    return IsTimedOut();
 }
 
 // Called once after isFinished returns true
 void ExtendArm::End() {
-
+    Robot::armExtender->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ExtendArm::Interrupted() {
-
+    End();
 }

@@ -45,4 +45,13 @@ void JackedUpDrive::Periodic() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+void JackedUpDrive::DriveForward(){
+	talonJackedUpDrive->Set(0.4);
+}
+void JackedUpDrive::DriveBack(){
+	talonJackedUpDrive->Set(-0.4);
+}
+void JackedUpDrive::Stop(){
+	talonJackedUpDrive->StopMotor();
+}
 

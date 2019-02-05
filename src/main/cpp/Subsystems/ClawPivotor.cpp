@@ -45,4 +45,12 @@ void ClawPivotor::Periodic() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-
+void ClawPivotor::ClawUp(){
+	sparkyClawPivotor->Set(0.5);
+}
+void ClawPivotor::ClawDown(){
+	sparkyClawPivotor->Set(-0.5);
+}
+void ClawPivotor::Stop(){
+	sparkyClawPivotor->StopMotor();
+}

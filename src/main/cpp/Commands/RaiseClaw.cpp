@@ -23,26 +23,26 @@ RaiseClaw::RaiseClaw(): frc::Command() {
 
 // Called just before this Command runs the first time
 void RaiseClaw::Initialize() {
-
+    SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void RaiseClaw::Execute() {
-
+    Robot::clawPivotor->ClawUp();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool RaiseClaw::IsFinished() {
-    return false;
+    return IsTimedOut();
 }
 
 // Called once after isFinished returns true
 void RaiseClaw::End() {
-
+    Robot::clawPivotor->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void RaiseClaw::Interrupted() {
-
+    End();
 }

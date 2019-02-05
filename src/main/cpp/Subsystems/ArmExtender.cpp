@@ -45,4 +45,12 @@ void ArmExtender::Periodic() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-
+void ArmExtender::ArmOut(){
+	selArmExtender->Set(frc::DoubleSolenoid::kForward);
+}
+void ArmExtender::ArmIn(){
+	selArmExtender->Set(frc::DoubleSolenoid::kReverse);
+}
+void ArmExtender::Stop(){
+	selArmExtender->Set(frc::DoubleSolenoid::kOff);
+}

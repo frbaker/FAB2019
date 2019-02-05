@@ -23,26 +23,26 @@ RetractArm::RetractArm(): frc::Command() {
 
 // Called just before this Command runs the first time
 void RetractArm::Initialize() {
-
+    SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void RetractArm::Execute() {
-
+    Robot::armExtender->ArmIn();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool RetractArm::IsFinished() {
-    return false;
+    return IsTimedOut();
 }
 
 // Called once after isFinished returns true
 void RetractArm::End() {
-
+    Robot::armExtender->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void RetractArm::Interrupted() {
-
+    End();
 }

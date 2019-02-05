@@ -23,26 +23,26 @@ DriveBackJackedUp::DriveBackJackedUp(): frc::Command() {
 
 // Called just before this Command runs the first time
 void DriveBackJackedUp::Initialize() {
-
+    SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveBackJackedUp::Execute() {
-
+    Robot::jackedUpDrive->DriveBack();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveBackJackedUp::IsFinished() {
-    return false;
+    return IsTimedOut();
 }
 
 // Called once after isFinished returns true
 void DriveBackJackedUp::End() {
-
+    Robot::jackedUpDrive->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void DriveBackJackedUp::Interrupted() {
-
+    End();
 }
