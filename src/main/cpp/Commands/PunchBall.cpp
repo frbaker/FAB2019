@@ -23,26 +23,26 @@ PunchBall::PunchBall(): frc::Command() {
 
 // Called just before this Command runs the first time
 void PunchBall::Initialize() {
-
+    SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void PunchBall::Execute() {
-
+    Robot::ballPuncher->PuncherOut();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool PunchBall::IsFinished() {
-    return false;
+    return IsTimedOut();
 }
 
 // Called once after isFinished returns true
 void PunchBall::End() {
-
+    Robot::ballPuncher->PuncherIn();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void PunchBall::Interrupted() {
-
+    End();
 }

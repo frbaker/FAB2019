@@ -46,3 +46,12 @@ void Shifter::Periodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
+void Shifter::ShiftUp(){
+	selShifter->Set(frc::DoubleSolenoid::kForward);
+}
+void Shifter::ShiftDown(){
+	selShifter->Set(frc::DoubleSolenoid::kReverse);
+}
+void Shifter::Stop(){
+	selShifter->Set(frc::DoubleSolenoid::kOff);
+}

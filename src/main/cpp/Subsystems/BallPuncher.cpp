@@ -45,4 +45,12 @@ void BallPuncher::Periodic() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-
+void BallPuncher::PuncherOut(){
+	selBallPuncher->Set(frc::DoubleSolenoid::kForward);
+}
+void BallPuncher::PuncherIn(){
+	selBallPuncher->Set(frc::DoubleSolenoid::kReverse);
+}
+void BallPuncher::Stop(){
+	selBallPuncher->Set(frc::DoubleSolenoid::kOff);
+}

@@ -23,26 +23,26 @@ UpShift::UpShift(): frc::Command() {
 
 // Called just before this Command runs the first time
 void UpShift::Initialize() {
-
+    SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void UpShift::Execute() {
-
+Robot::shifter->ShiftUp();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool UpShift::IsFinished() {
-    return false;
+     return IsTimedOut();
 }
 
 // Called once after isFinished returns true
 void UpShift::End() {
-
+    Robot::shifter->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void UpShift::Interrupted() {
-
+    End();
 }
