@@ -20,14 +20,18 @@
 #include "Commands/DriveForwardJackedUp.h"
 #include "Commands/DriveWithJoy.h"
 #include "Commands/ExtendArm.h"
+#include "Commands/LowerBackJacks.h"
 #include "Commands/LowerBoom.h"
+#include "Commands/LowerBothJacks.h"
 #include "Commands/LowerClaw.h"
-#include "Commands/LowerJacks.h"
+#include "Commands/LowerFontJacks.h"
 #include "Commands/OpenClaw.h"
 #include "Commands/PunchBall.h"
+#include "Commands/RaiseBackJacks.h"
 #include "Commands/RaiseBoom.h"
+#include "Commands/RaiseBothJacks.h"
 #include "Commands/RaiseClaw.h"
-#include "Commands/RaiseJacks.h"
+#include "Commands/RaiseFrontJacks.h"
 #include "Commands/RetractArm.h"
 #include "Commands/UpShift.h"
 
@@ -47,16 +51,20 @@ OI::OI() {
     a1->WhileHeld(new OpenClaw());
     joystick1.reset(new frc::Joystick(0));
     
-    lB5.reset(new frc::JoystickButton(joystick1.get(), 5));
-    lB5->WhileHeld(new LowerJacks());
     rB6.reset(new frc::JoystickButton(joystick1.get(), 6));
-    rB6->WhileHeld(new RaiseJacks());
+    rB6->WhileHeld(new RaiseBothJacks());
+    lB5.reset(new frc::JoystickButton(joystick1.get(), 5));
+    lB5->WhileHeld(new LowerBothJacks());
     ltrig11.reset(new frc::JoystickButton(joystick1.get(), 11));
     ltrig11->WhenPressed(new DownShift());
     rtrig12.reset(new frc::JoystickButton(joystick1.get(), 12));
     rtrig12->WhenPressed(new UpShift());
 
     // SmartDashboard Buttons
+    frc::SmartDashboard::PutData("RaiseBothJacks", new RaiseBothJacks());
+    frc::SmartDashboard::PutData("LowerBothJacks", new LowerBothJacks());
+    frc::SmartDashboard::PutData("LowerBackJacks", new LowerBackJacks());
+    frc::SmartDashboard::PutData("RaiseBackJacks", new RaiseBackJacks());
     frc::SmartDashboard::PutData("RetractArm", new RetractArm());
     frc::SmartDashboard::PutData("ExtendArm", new ExtendArm());
     frc::SmartDashboard::PutData("PunchBall", new PunchBall());
@@ -68,8 +76,8 @@ OI::OI() {
     frc::SmartDashboard::PutData("RaiseClaw", new RaiseClaw());
     frc::SmartDashboard::PutData("LowerBoom", new LowerBoom());
     frc::SmartDashboard::PutData("RaiseBoom", new RaiseBoom());
-    frc::SmartDashboard::PutData("LowerJacks", new LowerJacks());
-    frc::SmartDashboard::PutData("RaiseJacks", new RaiseJacks());
+    frc::SmartDashboard::PutData("LowerFontJacks", new LowerFontJacks());
+    frc::SmartDashboard::PutData("RaiseFrontJacks", new RaiseFrontJacks());
     frc::SmartDashboard::PutData("CloseClaw", new CloseClaw());
     frc::SmartDashboard::PutData("OpenClaw", new OpenClaw());
     frc::SmartDashboard::PutData("DriveWithJoy", new DriveWithJoy());
