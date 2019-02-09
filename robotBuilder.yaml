@@ -136,7 +136,7 @@ Children:
           validators: *id004
           value: Brushless
       Base: CAN SparkMAX
-      Name: CAN SparkMAX 1
+      Name: CAN SparkMAXJacks1
     - Children: []
       Properties:
         CAN ID: !!robotbuilder.data.properties.ChoicesProperty
@@ -152,7 +152,7 @@ Children:
           validators: *id004
           value: Brushless
       Base: CAN SparkMAX
-      Name: CAN SparkMAX 2
+      Name: CAN SparkMAXJacks2
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Send to SmartDashboard, validators: null, value: false}
@@ -186,7 +186,7 @@ Children:
           validators: *id004
           value: Brushless
       Base: CAN SparkMAX
-      Name: CAN SparkMAX 1
+      Name: CAN SparkBoom
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty

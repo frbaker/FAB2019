@@ -24,26 +24,26 @@ CloseClaw::CloseClaw(): frc::Command() {
 
 // Called just before this Command runs the first time
 void CloseClaw::Initialize() {
-
+    SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void CloseClaw::Execute() {
-
+    Robot::claw->ClawClose();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool CloseClaw::IsFinished() {
-    return false;
+    return IsTimedOut();
 }
 
 // Called once after isFinished returns true
 void CloseClaw::End() {
-
+    Robot::claw->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void CloseClaw::Interrupted() {
-
+    End();
 }

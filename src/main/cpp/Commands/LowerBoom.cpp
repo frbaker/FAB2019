@@ -24,26 +24,26 @@ LowerBoom::LowerBoom(): frc::Command() {
 
 // Called just before this Command runs the first time
 void LowerBoom::Initialize() {
-
+    SetTimeout(1);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LowerBoom::Execute() {
-
+    Robot::boomer->BoomDown();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool LowerBoom::IsFinished() {
-    return false;
+    return IsTimedOut();
 }
 
 // Called once after isFinished returns true
 void LowerBoom::End() {
-
+    Robot::boomer->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LowerBoom::Interrupted() {
-
+    End();
 }
