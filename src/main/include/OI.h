@@ -37,6 +37,8 @@ private:
 	
 	
 	std::shared_ptr<frc::Joystick> joystick2;
+	std::shared_ptr<frc::JoystickButton> lBumper6;
+	std::shared_ptr<frc::JoystickButton> rBumper5;
 	std::shared_ptr<frc::JoystickButton> y4;
 	std::shared_ptr<frc::JoystickButton> b2;
 	std::shared_ptr<frc::JoystickButton> a1;

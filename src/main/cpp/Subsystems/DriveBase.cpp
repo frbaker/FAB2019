@@ -56,11 +56,11 @@ sparkyRightFollow->Follow(*sparkyRightLead);
 
 
 
-
+/*
     const int kTimeoutMs = 30;
-    pigeonIMU1->SetFusedHeading(0.0, kTimeoutMs); /* reset heading, angle measurement wraps at plus/minus 23,040 degrees (64 rotations) */
+    pigeonIMU1->SetFusedHeading(0.0, kTimeoutMs); // reset heading, angle measurement wraps at plus/minus 23,040 degrees (64 rotations) 
     _goStraight = GoStraightOff;
-
+*/
 }
 
 void DriveBase::Periodic() {

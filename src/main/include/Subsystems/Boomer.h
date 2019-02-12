@@ -38,7 +38,7 @@ public:
 	void BoomUp();
 	void BoomDown();
 	void Stop();
-	
+	rev::CANEncoder boom_encoder = cANSparkBoom->GetEncoder();
 
 
 };
