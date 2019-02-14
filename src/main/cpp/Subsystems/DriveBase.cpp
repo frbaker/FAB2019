@@ -76,8 +76,8 @@ void DriveBase::Periodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveBase::JoyDrive(){
-    double forBack = Robot::oi->getJoystick1()->GetRawAxis(1);
-    double turn = Robot::oi->getJoystick1()->GetRawAxis(4);
+    double forBack = DB(Robot::oi->getJoystick1()->GetRawAxis(1));
+    double turn = DB(Robot::oi->getJoystick1()->GetRawAxis(4));
 	forBack*=-1;
 
 frc::SmartDashboard::PutNumber("Left Encoder Pos", left_encoder.GetPosition());

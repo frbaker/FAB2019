@@ -38,9 +38,13 @@ public:
 	void BoomUp();
 	void BoomDown();
 	void Stop();
+	void JoyBoom();
+	double boomControl;
+	rev::CANPIDController boom_pidController = cANSparkBoom->GetPIDController();
+	double kP = 0.1, kI = 1e-4, kD = 1, kIz = 0, kFF = 0, kMaxOutput = 1, kMinOutput = -1;
 	rev::CANEncoder boom_encoder = cANSparkBoom->GetEncoder();
-
-
+	double DB(double axisVal);
+	double LIMS(double limitVal, bool goingUp);
 };
 
 #endif
