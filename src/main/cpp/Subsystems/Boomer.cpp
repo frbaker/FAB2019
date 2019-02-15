@@ -84,35 +84,111 @@ void Boomer::JoyBoom(){
 void Boomer::BoomUp(){
     frc::SmartDashboard::PutNumber("Boom Encoder Pos", boom_encoder.GetPosition());
     double curPos = boom_encoder.GetPosition();
-    double pos0 = -0.0;
-    double pos1 = -35.0;
-    double pos2 = -70.0;
-    double pos3 = -105.0;
+    double pos0 = -13;
+    double pos1 = -26;
+    double pos2 = -39;
+    double pos4 = -52;
+    double pos5 = -65;
+    double pos6 = -78;
+    double pos7 = -91;
+    double pos8 = -104;
+    double pos9 = -117;
 
-boom_pidController.SetReference(pos2, rev::ControlType::kPosition);
-/*
-    if (curPos < pos0 && curPos > pos1){
+
+//boom_pidController.SetReference(pos2, rev::ControlType::kPosition);
+    
+    
+    /*
+    the boom motor encoder reads inverted so as the boom raises the encoder reading goes down...
+    -143 is the high limit, and 0 is all the way down.
+    (-143)---pos9---pos8---pos7---pos6---pos5---pos4---pos3---pos2---pos1---pos0---0
+    <--All the way UP --------------------------------------------All the way down-->
+    */
+    if (curPos < 0 && curPos > pos0){ //Go up to Pos0  
+       boom_pidController.SetReference(pos0, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos0 && curPos > pos1){ //Go up to Pos1
        boom_pidController.SetReference(pos1, rev::ControlType::kPosition);
     }
-    else if (curPos < pos1 && curPos > pos2){
-        
-            boom_pidController.SetReference(pos2, rev::ControlType::kPosition);
-        
+    else if (curPos < pos1 && curPos > pos2){ //Go up to Pos2
+      boom_pidController.SetReference(pos2, rev::ControlType::kPosition);
     }
-    else if (curPos < pos2 && curPos > pos3){
-       
-            boom_pidController.SetReference(pos3, rev::ControlType::kPosition);
-        
+    else if (curPos < pos2 && curPos > pos3){ //Go up to Pos3
+      boom_pidController.SetReference(pos3, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos3 && curPos > pos4){ //Go up to Pos4
+      boom_pidController.SetReference(pos4, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos4 && curPos > pos5){ //Go up to Pos5
+      boom_pidController.SetReference(pos5, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos5 && curPos > pos6){ //Go up to Pos6
+      boom_pidController.SetReference(pos6, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos6 && curPos > pos7){ //Go up to Pos7
+      boom_pidController.SetReference(pos7, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos7 && curPos > pos8){ //Go up to Pos8
+      boom_pidController.SetReference(pos8, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos8 && curPos > pos9){ //Go up to Pos9
+      boom_pidController.SetReference(pos9, rev::ControlType::kPosition);
     }
     
     //cANSparkBoom->Set(0.5);
-    */
+    
 }
 void Boomer::BoomDown(){
     frc::SmartDashboard::PutNumber("Boom Encoder Pos", boom_encoder.GetPosition());
+    double curPos = boom_encoder.GetPosition();
+    double pos0 = -13;
+    double pos1 = -26;
+    double pos2 = -39;
+    double pos4 = -52;
+    double pos5 = -65;
+    double pos6 = -78;
+    double pos7 = -91;
+    double pos8 = -104;
+    double pos9 = -117;    
+    
+    
     //cANSparkBoom->Set(-0.5);
-
-    boom_pidController.SetReference(-50.0, rev::ControlType::kPosition);
+    /*
+    the boom motor encoder reads inverted so as the boom raises the encoder reading goes down...
+    -143 is the high limit, and 0 is all the way down.
+    (-143)---pos9---pos8---pos7---pos6---pos5---pos4---pos3---pos2---pos1---pos0---0
+    <--All the way UP --------------------------------------------All the way down-->
+    */
+    if (curPos < pos0 && curPos > pos1){ //Go Down to Pos0
+       boom_pidController.SetReference(pos0, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos1 && curPos > pos2){ //Go Down to Pos1
+      boom_pidController.SetReference(pos1, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos2 && curPos > pos3){ //Go Down to Pos2
+      boom_pidController.SetReference(pos2, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos3 && curPos > pos4){ //Go Down to Pos3
+      boom_pidController.SetReference(pos3, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos4 && curPos > pos5){ //Go Down to Pos4
+      boom_pidController.SetReference(pos4, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos5 && curPos > pos6){ //Go Down to Pos5
+      boom_pidController.SetReference(pos5, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos6 && curPos > pos7){ //Go Down to Pos6
+      boom_pidController.SetReference(pos6, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos7 && curPos > pos8){ //Go Down to Pos7
+      boom_pidController.SetReference(pos7, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos8 && curPos > pos9){ //Go Down to Pos8
+      boom_pidController.SetReference(pos8, rev::ControlType::kPosition);
+    }
+    else if (curPos < pos9 && curPos > -143){ //Go Down to Pos9
+      boom_pidController.SetReference(pos9, rev::ControlType::kPosition);
+    }
 }
 void Boomer::Stop(){
     cANSparkBoom->StopMotor();
