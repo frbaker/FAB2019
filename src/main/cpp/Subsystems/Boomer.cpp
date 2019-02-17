@@ -87,12 +87,13 @@ void Boomer::BoomUp(){
     double pos0 = -13;
     double pos1 = -26;
     double pos2 = -39;
-    double pos4 = -52;
-    double pos5 = -65;
-    double pos6 = -78;
-    double pos7 = -91;
-    double pos8 = -104;
-    double pos9 = -117;
+    double pos3 = -52;
+    double pos4 = -65;
+    double pos5 = -78;
+    double pos6 = -91;
+    double pos7 = -104;
+    double pos8 = -117;
+    double pos9 = -130;
 
 
 //boom_pidController.SetReference(pos2, rev::ControlType::kPosition);
@@ -144,12 +145,13 @@ void Boomer::BoomDown(){
     double pos0 = -13;
     double pos1 = -26;
     double pos2 = -39;
-    double pos4 = -52;
-    double pos5 = -65;
-    double pos6 = -78;
-    double pos7 = -91;
-    double pos8 = -104;
-    double pos9 = -117;    
+    double pos3 = -52;
+    double pos4 = -65;
+    double pos5 = -78;
+    double pos6 = -91;
+    double pos7 = -104;
+    double pos8 = -117;
+    double pos9 = -130;    
     
     
     //cANSparkBoom->Set(-0.5);
