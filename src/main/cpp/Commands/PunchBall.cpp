@@ -39,7 +39,7 @@ bool PunchBall::IsFinished() {
 
 // Called once after isFinished returns true
 void PunchBall::End() {
-    Robot::ballPuncher->PuncherIn();
+    Robot::ballPuncher->Stop();
 }
 
 // Called when another command which requires one or more of the same

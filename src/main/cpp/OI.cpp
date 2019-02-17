@@ -60,9 +60,9 @@ OI::OI() {
     rB6->WhileHeld(new RaiseBothJacks());
     lB5.reset(new frc::JoystickButton(joystick1.get(), 5));
     lB5->WhileHeld(new LowerBothJacks());
-    ltrig11.reset(new frc::JoystickButton(joystick1.get(), 11));
+    ltrig11.reset(new frc::JoystickButton(joystick1.get(), 2));
     ltrig11->WhenPressed(new DownShift());
-    rtrig12.reset(new frc::JoystickButton(joystick1.get(), 12));
+    rtrig12.reset(new frc::JoystickButton(joystick1.get(), 1));
     rtrig12->WhenPressed(new UpShift());
 
     // SmartDashboard Buttons
