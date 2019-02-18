@@ -46,9 +46,12 @@ void ArmExtender::Periodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void ArmExtender::ArmOut(){
+    frc::SmartDashboard::PutBoolean("Arm In", false);
 	selArmExtender->Set(frc::DoubleSolenoid::kForward);
 }
 void ArmExtender::ArmIn(){
+    frc::SmartDashboard::PutBoolean("Arm In", true);
+    
 	selArmExtender->Set(frc::DoubleSolenoid::kReverse);
 }
 void ArmExtender::Stop(){

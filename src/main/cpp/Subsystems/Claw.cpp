@@ -47,10 +47,10 @@ void Claw::Periodic() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void Claw::ClawOpen(){
-	sparkyClaw->Set(0.4);
+	sparkyClaw->Set(0.75);
 }
 void Claw::ClawClose(){
-	sparkyClaw->Set(-0.4);
+	sparkyClaw->Set(-0.75);
 }
 void Claw::Stop(){
 	sparkyClaw->StopMotor();

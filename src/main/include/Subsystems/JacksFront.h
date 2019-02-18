@@ -37,7 +37,7 @@ public:
 void RaiseJacksInFront();
 void LowerJacksInFront();
 void Stop();
-
+rev::CANEncoder frontJack_encoder = cANSparkMAXJacksFront->GetEncoder();
 };
 
 #endif
