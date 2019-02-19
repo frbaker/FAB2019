@@ -16,6 +16,7 @@
 #include "Commands/ArmWatchBoom.h"
 #include "Commands/AutonomousCommand.h"
 #include "Commands/BoomWithJoy.h"
+#include "Commands/CameraJoy.h"
 #include "Commands/ClawWithJoy.h"
 #include "Commands/CloseClaw.h"
 #include "Commands/DownShift.h"
@@ -77,6 +78,7 @@ OI::OI() {
     rtrig12->WhenPressed(new UpShift());
 
     // SmartDashboard Buttons
+    frc::SmartDashboard::PutData("CameraJoy", new CameraJoy());
     frc::SmartDashboard::PutData("retractArmConditionally", new retractArmConditionally());
     frc::SmartDashboard::PutData("ArmWatchBoom", new ArmWatchBoom());
     frc::SmartDashboard::PutData("ClawWithJoy", new ClawWithJoy());
