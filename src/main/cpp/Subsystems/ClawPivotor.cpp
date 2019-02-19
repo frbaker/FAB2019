@@ -62,3 +62,11 @@ void ClawPivotor::ClawDown(){
 void ClawPivotor::Stop(){
 	sparkyClawPivotor->StopMotor();
 }
+/** @return 10% deadband */
+double ClawPivotor::DB(double axisVal){
+    if (axisVal < -0.05)
+        return axisVal;
+    if (axisVal > +0.1)
+        return axisVal;
+    return 0;
+}

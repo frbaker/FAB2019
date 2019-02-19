@@ -146,7 +146,7 @@ Children:
         validators: null
         value: []
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: BoomWithJoy}
+        name: Default Command, type: Command, validators: null, value: ArmWatchBoom}
       Constants: !!robotbuilder.data.properties.ConstantsProperty
         default: []
         name: Constants
@@ -300,13 +300,13 @@ Children:
           default: '0'
           name: Reverse Channel (Solenoid)
           validators: &id014 [Solenoid]
-          value: '1'
+          value: '5'
         Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: &id015 ['0', '1', '2', '3', '4', '5', '6', '7']
           default: '0'
           name: Forward Channel (Solenoid)
           validators: &id016 [Solenoid]
-          value: '0'
+          value: '4'
       Base: Double Solenoid
       Name: SelShifter
     Properties:
@@ -381,13 +381,13 @@ Children:
           default: '0'
           name: Reverse Channel (Solenoid)
           validators: *id014
-          value: '5'
+          value: '1'
         Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id015
           default: '0'
           name: Forward Channel (Solenoid)
           validators: *id016
-          value: '4'
+          value: '0'
       Base: Double Solenoid
       Name: SelArmExtender
     Properties:
@@ -744,7 +744,7 @@ Children:
           name: Command
           type: Command
           validators: *id018
-          value: DownShift
+          value: ExtendArm
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: whileHeld
@@ -831,7 +831,7 @@ Children:
           name: Command
           type: Command
           validators: *id018
-          value: UpShift
+          value: RetractArm
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id019
           default: whileHeld
@@ -971,7 +971,7 @@ Children:
     Base: Command
     Name: CloseClaw
   - Children: []
-    Properties: &id028
+    Properties: &id030
       Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Autonomous Selection, validators: null, value: false}
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1257,7 +1257,7 @@ Children:
     Base: Command
     Name: RetractArm
   - Children: []
-    Properties: &id027
+    Properties: &id028
       Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Autonomous Selection, validators: null, value: false}
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1397,9 +1397,32 @@ Children:
         value:
         - !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id024
+            base: &id029
+              help: A command specifies an action that the robot can perform.
+              name: Command
+              properties:
+              - !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: None}
+              - !!robotbuilder.data.properties.BooleanProperty {default: true, name: Button on SmartDashboard,
+                validators: null, value: true}
+              - !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              - !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id027 []
+                name: Parameter presets
+                validators: null
+                value: *id027
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Run When Disabled,
+                validators: null, value: false}
+              - !!robotbuilder.data.properties.BooleanProperty {default: false, name: Autonomous Selection,
+                validators: null, value: false}
+              supports: {}
+              type: Command
             name: RaiseBackJacks
-            properties: *id027
+            properties: *id028
           hasMatch: true
           order: Parallel
           parameters:
@@ -1410,9 +1433,9 @@ Children:
           previous: null
         - !!robotbuilder.data.CommandGroupEntry
           command:
-            base: *id024
+            base: *id029
             name: RaiseFrontJacks
-            properties: *id028
+            properties: *id030
           hasMatch: true
           order: Parallel
           parameters:
@@ -1426,7 +1449,7 @@ Children:
     Base: Command Group
     Name: RaiseBothJacks
   - Children: []
-    Properties:
+    Properties: &id032
       Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Autonomous Selection, validators: null, value: false}
       Parameters: !!robotbuilder.data.properties.ParametersProperty
@@ -1469,6 +1492,79 @@ Children:
         name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: ClawWithJoy
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id031 []
+        name: Parameter presets
+        validators: null
+        value: *id031
+      Commands: !!robotbuilder.data.properties.ListProperty
+        default: &id034
+        - !!robotbuilder.data.CommandGroupEntry
+          command:
+            base: *id029
+            name: BoomWithJoy
+            properties: *id032
+          hasMatch: true
+          order: Parallel
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        - !!robotbuilder.data.CommandGroupEntry
+          command:
+            base: *id029
+            name: retractArmConditionally
+            properties: &id035
+              Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Autonomous Selection, validators: null, value: false}
+              Parameters: !!robotbuilder.data.properties.ParametersProperty
+                default: []
+                name: Parameters
+                validators: null
+                value: []
+              Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {
+                default: false, name: Run When Disabled, validators: null, value: false}
+              Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+                name: Requires, type: Subsystem, validators: null, value: None}
+              Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+                default: &id033 []
+                name: Parameter presets
+                validators: null
+                value: *id033
+              Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {
+                default: true, name: Button on SmartDashboard, validators: null, value: true}
+          hasMatch: true
+          order: Parallel
+          parameters:
+            default: []
+            name: ParametersProperty
+            validators: null
+            value: []
+          previous: null
+        name: Commands
+        validators: *id026
+        value: *id034
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command Group
+    Name: ArmWatchBoom
+  - Children: []
+    Properties: *id035
+    Base: Command
+    Name: retractArmConditionally
   Properties: {}
   Base: Commands
   Name: Commands

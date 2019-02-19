@@ -38,7 +38,8 @@ void JoyClaw();
 void ClawUp();
 void ClawDown();
 void Stop();
-
+/** @return 10% deadband */
+double DB(double axisVal);
 };
 
 #endif

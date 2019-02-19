@@ -14,6 +14,7 @@
 #include "frc/commands/Subsystem.h"
 #include "frc/WPILib.h"
 #include "rev/CanSparkMax.h"
+
 /**
  *
  *
@@ -45,6 +46,7 @@ public:
 	rev::CANEncoder boom_encoder = cANSparkBoom->GetEncoder();
 	double DB(double axisVal);
 	double LIMS(double limitVal, bool goingUp);
+	double GetBoomPos();
 };
 
 #endif
