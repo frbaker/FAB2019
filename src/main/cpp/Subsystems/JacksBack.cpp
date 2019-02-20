@@ -50,11 +50,28 @@ void JacksBack::Periodic() {
 // here. Call these from Commands.
 void JacksBack::RaiseJacksInBack(){
     frc::SmartDashboard::PutNumber("Back Jacks Encoder Pos", backJack_encoder.GetPosition());
-    cANSparkMAXJacksBack->Set(0.5);
+    double backJacksPos = backJack_encoder.GetPosition();
+    if (backJacksPos > 125){
+        Stop();
+        frc::SmartDashboard::PutNumber("Back Jacks Limit", 4);
+    }
+    else{
+        cANSparkMAXJacksBack->Set(0.5);
+        frc::SmartDashboard::PutNumber("Back Jacks Limit", 3);
+    }
 }
 void JacksBack::LowerJacksInBack(){
+    double backJacksPos = backJack_encoder.GetPosition();
     frc::SmartDashboard::PutNumber("Back Jacks Encoder Pos", backJack_encoder.GetPosition());
-    cANSparkMAXJacksBack->Set(-0.5);
+     if (backJacksPos > 1){
+        cANSparkMAXJacksBack->Set(-0.5);
+        frc::SmartDashboard::PutNumber("Back Jacks Limit", 0);
+    }
+    else {
+        Stop();
+        frc::SmartDashboard::PutNumber("Back Jacks Limit", 1);
+    
+    }
 }
 void JacksBack::Stop(){
     cANSparkMAXJacksBack->StopMotor();

@@ -27,7 +27,7 @@ Boomer::Boomer() : frc::Subsystem("Boomer") {
     
     boom_pidController = cANSparkBoom->GetPIDController();
     boom_encoder = cANSparkBoom->GetEncoder();
-    double kP = 0.1, kI = 1e-4, kD = 1, kIz = 0, kFF = 0, kMaxOutput = 0.5, kMinOutput = -0.5;
+    double kP = 0.1, kI = 1e-4, kD = 1, kIz = 0, kFF = 0, kMaxOutput = 0.3, kMinOutput = -0.3;
 }
 
 void Boomer::InitDefaultCommand() {
@@ -87,16 +87,16 @@ double boomControl = Robot::oi->getJoystick2()->GetRawAxis(1);
 void Boomer::BoomUp(){
     frc::SmartDashboard::PutNumber("Boom Encoder Pos", boom_encoder.GetPosition());
     double curPos = boom_encoder.GetPosition();
-    double pos0 = -13;
-    double pos1 = -26;
-    double pos2 = -39;
-    double pos3 = -52;
-    double pos4 = -65;
-    double pos5 = -78;
-    double pos6 = -91;
-    double pos7 = -104;
-    double pos8 = -117;
-    double pos9 = -130;
+    double pos0 = -98;
+    double pos1 = -98;
+    double pos2 = -98;
+    double pos3 = -98;
+    double pos4 = -98;
+    double pos5 = -98;
+    double pos6 = -98;
+    double pos7 = -98;
+    double pos8 = -98;
+    double pos9 = -98;
 
 
 //boom_pidController.SetReference(pos2, rev::ControlType::kPosition);
@@ -145,16 +145,16 @@ void Boomer::BoomUp(){
 void Boomer::BoomDown(){
     frc::SmartDashboard::PutNumber("Boom Encoder Pos", boom_encoder.GetPosition());
     double curPos = boom_encoder.GetPosition();
-    double pos0 = -13;
-    double pos1 = -26;
-    double pos2 = -39;
-    double pos3 = -52;
-    double pos4 = -65;
-    double pos5 = -78;
-    double pos6 = -91;
-    double pos7 = -104;
-    double pos8 = -117;
-    double pos9 = -130;    
+    double pos0 = -98;
+    double pos1 = -98;
+    double pos2 = -98;
+    double pos3 = -98;
+    double pos4 = -98;
+    double pos5 = -98;
+    double pos6 = -98;
+    double pos7 = -98;
+    double pos8 = -98;
+    double pos9 = -98;
     
     
     //cANSparkBoom->Set(-0.5);
@@ -221,11 +221,14 @@ double Boomer::LIMS(double limitVal, bool goingUp){
     else if (limitVal > -10 && !goingUp){ //moving in down direction near bottom limit
         return 0.3; //30% of requested speed
     }
-    else if (limitVal < -133 && goingUp){ //moving in up direction near top limit
-        return 0.3; //30% of requested speed
+    else if (limitVal < -147 && goingUp){ //moving in up direction near top limit
+        return 0.0; //30% of requested speed
     }
     else if (limitVal < -140 && goingUp){
         return 0.25; //20% of requested speed
+    }
+    else if (limitVal < -133 && goingUp){
+        return 0.3;
     }
     else{
         return 1.0; // not near the limits - use existing values

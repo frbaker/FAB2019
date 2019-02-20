@@ -51,17 +51,17 @@ OI::OI() {
     start8j2.reset(new frc::JoystickButton(joystick2.get(), 8));
     start8j2->WhileHeld(new PunchBall());
     x3.reset(new frc::JoystickButton(joystick2.get(), 3));
-    x3->WhileHeld(new RetractArm());
+    x3->WhileHeld(new LowerBoom());
     lBumper6.reset(new frc::JoystickButton(joystick2.get(), 6));
-    lBumper6->WhileHeld(new LowerBoom());
+    lBumper6->WhileHeld(new CloseClaw());
     rBumper5.reset(new frc::JoystickButton(joystick2.get(), 5));
-    rBumper5->WhileHeld(new RaiseBoom());
+    rBumper5->WhileHeld(new OpenClaw());
     y4.reset(new frc::JoystickButton(joystick2.get(), 4));
     y4->WhileHeld(new ExtendArm());
     b2.reset(new frc::JoystickButton(joystick2.get(), 2));
-    b2->WhileHeld(new CloseClaw());
+    b2->WhileHeld(new RaiseBoom());
     a1.reset(new frc::JoystickButton(joystick2.get(), 1));
-    a1->WhileHeld(new OpenClaw());
+    a1->WhileHeld(new RetractArm());
     joystick1.reset(new frc::Joystick(0));
     
     start8.reset(new frc::JoystickButton(joystick1.get(), 8));
