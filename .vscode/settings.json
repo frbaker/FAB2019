@@ -11,5 +11,6 @@
     ".classpath": true,
     ".project": true,
     "**/*~": true
-  }
+  },
+  "C_Cpp.default.configurationProvider": "vscode-wpilib"
 }
